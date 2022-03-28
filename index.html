@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhabbat Pulatova</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
 </head>
 <body>
   <section class="header-section">
@@ -39,12 +40,12 @@
   <section id="work" class="work-section">
       <h2 class="work-header">My Recent Work</h2>
       <div class="work-part">
-          <div class="work-description">
+          <div class="wow slideInLeft work-description" data-wow-offset="150" data-wow-duration="2s">
               <div class="work-name">Mood Tracker</div>
               <div class="work-text">Designed some empty state screens in kawaii style for the popular sheepify app</div>
-              <a href="#" class="work-link">View Case Study</a>
+              <a href="https://github.com/muhabbat98/mood" class="work-link">Github repository</a>
           </div>
-          <div class="work-photo">
+          <div id="workPhoto" class="wow slideInUp work-photo" data-wow-offset="150" data-wow-offset="0" data-wow-duration="2s">
                 <div class="photo-box"><img src="./assets/img/mood.png" alt="mood project photo"></div>
                 <div class="photo-box"><img src="./assets/img/mood-1.png" alt="mood project photo"></div>
                 <div class="photo-box"><img src="./assets/img/mood-2.png" alt="mood project photo"></div>
@@ -63,7 +64,80 @@
     
     </div>
   </section>
+  <section class="feedbacks">
+      <h2>Some Generous Words</h2>
+      <p>Some of my favorite testimonials from my clients</p>
+  </section>
+  <section class="about-me">
+      <div class="text-part">
+        <h2> A Little Bit About Me </h2>
+        <p>
+            I am Shambhavi Mishra from Lucknow, India. I am working in an Indian Startup as a Product Designer for the past one
+            year.
+        </p>
+        <p>
+            I got featured various times on many big and small marketplaces, portfolio websites and blogs. I also received some
+            awards and recognitions from some of the big and small award companies.
+            Besides designing, I like to write poems, stories and sing songs.
+        </p>
+        <div class="contact-btn">
+            <button>Contact Me</button>
+        </div>
+      </div>
+      <div class="image-part" data-wow-offset="10">
+          <img  class="wow bounce" src="./assets/img/girl-02.png" data-wow-offset="550" alt="happy girl">
+      </div>
+  </section>
+  <footer>
+    <div>
+        <h2 class="endup">Let’s work together and make everything super cute and super useful.</h2>
+        <div class="contact-btn">
+            <button>Contact Me</button>
+        </div>
+    </div>
+    <div class="socials">
+        <ul>
+            <li><a href="https://www.facebook.com/bmpmuhabbat/"><img src="./assets/img/facebook.png" alt="facebook"></a></li>
+            <li><a href="https://github.com/muhabbat98"><img src="./assets/img/github.png" alt="github"></a></li>
+            <li><a href="https://www.instagram.com/bmp_coder/"><img src="./assets/img/instagram.png" alt="instagram"></a></li>
+            <li><a href="https://www.linkedin.com/in/muhabbat-pulatova-b1118a196"><img src="./assets/img/linkedin.png" alt="linkedin"></a></li>
+            <li><a href="https://t.me/bmp98"><img src="./assets/img/telegram.png" alt="telegram"></a></li>
+        </ul>
+    </div>
+  </footer>
+  <script src="./js/wow.js"></script>
   <script>
+
+       var wow = new WOW(
+            {
+                boxClass: 'wow',      
+                animateClass: 'animated', 
+                offset: 0,         
+                mobile: true,      
+                live: true,      
+                callback: function ( box ){},
+                scrollContainer: null,    
+                resetAnimation: true,  
+            }
+        );
+        wow.init();
+
+  
+        for(let one of workPhoto.childNodes ){    
+            if(one.tagName==="DIV"){
+                one.addEventListener("mouseover",e=>{
+                    one.childNodes[ 0 ].style.transform = 'scale(1.4)'
+                    one.childNodes[ 0 ].style.transition = "all 1s ease"
+                    one.childNodes[ 0 ].style.zIndex = "5"
+                })
+                one.addEventListener( "mouseleave", e =>
+                {
+                    one.childNodes[ 0 ].style.transform = 'scale(1.0)';
+                    one.childNodes[ 0 ].style.transition = "all 1s ease";
+                    one.childNodes[ 0 ].style.zIndex = "0";
+                } )
+            }
+        }
 
         // image.addEventListener('mouseenter',e=>{
         //     // console.log(e)          
