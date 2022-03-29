@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhabbat Pulatova</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/animate.min.css">
 </head>
 <body>
   <section class="header-section">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div id="image" class="image-part">
-            <img id="girlImage" class="girl-image"  src="./assets/img/girl.png" alt="this's girl">
+            <img id="girlImage" class="girl-image"  src="./public/assets/img/girl.png" alt="this's girl">
             <!-- <img id="newImage" class="hidden-image" src="./assets/img/my-photo.png" alt="this's me"> -->
 
         </div>
@@ -46,12 +46,12 @@
               <a href="https://github.com/muhabbat98/mood" class="work-link">Github repository</a>
           </div>
           <div id="workPhoto" class="wow slideInUp work-photo" data-wow-offset="150" data-wow-offset="0" data-wow-duration="2s">
-                <div class="photo-box"><img src="./assets/img/mood.png" alt="mood project photo"></div>
-                <div class="photo-box"><img src="./assets/img/mood-1.png" alt="mood project photo"></div>
-                <div class="photo-box"><img src="./assets/img/mood-2.png" alt="mood project photo"></div>
-                <div class="photo-box"><img src="./assets/img/mood-3.png" alt="mood project photo"></div>
-                <div class="photo-box"><img src="./assets/img/mood-4.png" alt="mood project photo"></div>
-                <div class="photo-box"><img src="./assets/img/mood-5.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood-1.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood-2.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood-3.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood-4.png" alt="mood project photo"></div>
+                <div class="photo-box"><img src="./public/assets/img/mood-5.png" alt="mood project photo"></div>
 
           </div>
       </div>
@@ -85,27 +85,41 @@
         </div>
       </div>
       <div class="image-part" data-wow-offset="10">
-          <img  class="wow bounce" src="./assets/img/girl-02.png" data-wow-offset="550" alt="happy girl">
+          <img  class="wow bounce" src="./public/assets/img/girl-02.png" data-wow-offset="550" alt="happy girl">
       </div>
   </section>
   <footer>
     <div>
         <h2 class="endup">Let’s work together and make everything super cute and super useful.</h2>
         <div class="contact-btn">
-            <button>Contact Me</button>
+            <button onclick="openModal()">Contact Me</button>
         </div>
     </div>
     <div class="socials">
         <ul>
-            <li><a href="https://www.facebook.com/bmpmuhabbat/"><img src="./assets/img/facebook.png" alt="facebook"></a></li>
-            <li><a href="https://github.com/muhabbat98"><img src="./assets/img/github.png" alt="github"></a></li>
-            <li><a href="https://www.instagram.com/bmp_coder/"><img src="./assets/img/instagram.png" alt="instagram"></a></li>
-            <li><a href="https://www.linkedin.com/in/muhabbat-pulatova-b1118a196"><img src="./assets/img/linkedin.png" alt="linkedin"></a></li>
-            <li><a href="https://t.me/bmp98"><img src="./assets/img/telegram.png" alt="telegram"></a></li>
+            <li><a href="https://www.facebook.com/bmpmuhabbat/"><img src="./public/assets/img/facebook.png" alt="facebook"></a></li>
+            <li><a href="https://github.com/muhabbat98"><img src="./public/assets/img/github.png" alt="github"></a></li>
+            <li><a href="https://www.instagram.com/bmp_coder/"><img src="./public/assets/img/instagram.png" alt="instagram"></a></li>
+            <li><a href="https://www.linkedin.com/in/muhabbat-pulatova-b1118a196"><img src="./public/assets/img/linkedin.png" alt="linkedin"></a></li>
+            <li><a href="https://t.me/bmp98"><img src="./public/assets/img/telegram.png" alt="telegram"></a></li>
         </ul>
     </div>
   </footer>
-  <script src="./js/wow.js"></script>
+  <div class="modal-section" id="modal">
+      <div class="modal-window">
+            <h2>Contact</h2>
+            <p><a href="tel:+9989-0990-3391">90-990-33-91</a></p>
+     
+            <form method="post" action="http://localhost:3000/" class="form-contact" >
+                <label for="body">Would you like to send me message? </label>
+                <input name="body" type="text">               
+                <br>
+                <input type="submit" value="submit">
+            </form>
+            <button onclick="closeModal()" class="esc">X</button>
+      </div>
+  </div>
+  <script src="./public/js/wow.js"></script>
   <script>
 
        var wow = new WOW(
@@ -138,7 +152,12 @@
                 } )
             }
         }
-
+        function openModal(){
+            modal.style.display = 'flex'
+        }
+        function closeModal (){
+            modal.style.display = 'none';
+        }
         // image.addEventListener('mouseenter',e=>{
         //     // console.log(e)          
         //     // image.appendChild(newImage)
