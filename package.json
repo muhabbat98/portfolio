@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/muhabbat98/portfolio#readme",
   "dependencies": {
-    "node-static": "^0.7.11",
     "twilio": "^3.76.0"
   }
 }
