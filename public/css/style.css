@@ -496,12 +496,68 @@ footer .endup{
     border:none;
 }
 /* #################################################### carusel########################################################### */
+.carusel{
+    position: relative;
+}
 .carusel-container{
+    margin-top: 96px;
     display: flex;
 }
 .carusel-container>div{
     width: calc(50% - 40px);
-    height: 200px;
+    height: 500px;
     margin: 0px 20px ;
-    background-color: red;
+    /* background-color: red; */
+}
+.carusel-control button{
+    background-color: transparent;
+    outline: none;
+    border:none;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background: url('../assets/img/arrow-left.png');
+    top:calc(50% - 32px);
+    cursor: pointer;
+}
+/* .carusel-control button:hover{
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(219, 232, 242, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(219, 232, 242, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(219, 232, 242, 0.2);
+} */
+.carusel-container img{
+    width: 280px;
+    height: 300px;
+}
+.btn-left{
+    left: 12px;
+}
+.btn-right{
+    right: 12px;
+    transform: rotate(180deg);
+}
+.carusel-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 2s ease;
+    overflow: hidden;
+}
+.carusel-data div{
+    padding: 16px;
+    font-size: 32px;
+    font-family: "Eczar", serif;
+    color: var(--darker-text-color);
+}
+.height-hidden{
+    height: 0;
+}
+.carusel-data h3{
+    margin-top: 32px;
+    width: 320px;
+    margin: 0 auto;
+    line-height: 60px;
+    color: var(--darker-text-color);
+    font-size: 28px;
 }

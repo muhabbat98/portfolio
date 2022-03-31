@@ -13,8 +13,8 @@
     <nav class="navigation-navbar">
         <ul>
             <li><button onclick="scrollMe('home')">Home</button></li>
-            <li><button onclick="scrollMe('work')">Work</button></li>
-            <li><button onclick="scrollMe('test')">Testimonials</button></li>
+            <li><button onclick="scrollMe('work')">Projects</button></li>
+            <li><button onclick="scrollMe('test')">Education</button></li>
             <li><button onclick="scrollMe('about')">About</button></li>
         </ul>
     </nav>
@@ -65,13 +65,13 @@
     </div>
   </section>
   <section id="test" class="feedbacks">
-      <h2>Some Generous Words</h2>
-      <p>Some of my favorite testimonials from my clients</p>
+      <h2>Education </h2>
+      <p>bachelor's degree and work experience</p>
       <div  class="carusel">
-          <div id="carusel" class="carusel-container"></div>
+        <div id="carusel" class="carusel-container"></div>
         <div class="carusel-control">
-            <button onclick="btnControl(-1)"><</button>
-            <button onclick="btnControl(1)">></button>
+            <button class="btn-left" onclick="btnControl(-1)"></button>
+            <button class="btn-right" onclick="btnControl(1)"></button>
         </div>
       </div>
   </section>
@@ -127,131 +127,9 @@
       </div>
   </div>
   <script src="./public/js/wow.js"></script>
+  <script src="./public/js/main.js"></script>
   <script>
-      const caruselData = [
-          { id: 1},
-          { id: 2 },
-          { id: 3 },
-          { id: 4 },
 
-      ]
-      let caruselNodes = []
-
-      let visibleContent = caruselData.slice(0,2)
-        for(let one of visibleContent ){
-            const caruselElement = document.createElement( "DIV" );
-            caruselElement.setAttribute( "class", "carusel-data" )
-            caruselElement.textContent = one.id
-            carusel.appendChild(caruselElement)
-        }
-
-    // console.log(carusel.childNodes)
-        // for(let one of carusel.childNodes ){
-        //     console.log(one, one.tagName)   
-        //     if(one.tagName==="DIV"){
-        //         // console.log(one)
-        //         caruselNodes.push(one)
-        //         if( parseInt(one.textContent) > 2){
-        //             // one.style.display="none"
-                    
-        //             carusel.removeChild(one)
-                    
-        //         }
-        //         // else if ( one.tagName === undefined ) {
-        //         //     carusel.removeChild( one )
-        //         // }
-
-        //     }
-           
-        // }
-       var wow = new WOW(
-            {
-                boxClass: 'wow',      
-                animateClass: 'animated', 
-                offset: 0,         
-                mobile: true,      
-                live: true,      
-                callback: function ( box ){},
-                scrollContainer: null,    
-                resetAnimation: true,  
-            }
-        );
-        wow.init();
-
-  
-        for(let one of workPhoto.childNodes ){    
-            if(one.tagName==="DIV"){
-                one.addEventListener("mouseover",e=>{
-                    one.childNodes[ 0 ].style.transform = 'scale(1.4)'
-                    one.childNodes[ 0 ].style.transition = "all 1s ease"
-                    one.childNodes[ 0 ].style.zIndex = "5"
-                })
-                one.addEventListener( "mouseleave", e =>
-                {
-                    one.childNodes[ 0 ].style.transform = 'scale(1.0)';
-                    one.childNodes[ 0 ].style.transition = "all 1s ease";
-                    one.childNodes[ 0 ].style.zIndex = "0";
-                } )
-            }
-        }
-        function openModal(){
-            modal.style.display = 'flex'
-        }
-        function closeModal (){
-            modal.style.display = 'none';
-        }
-        function scrollMe(e){
-            // console.log('event',e)
-            const element = document.getElementById(e)
-            element.scrollIntoView( { block: "start", behavior: "smooth" } )
-            
-        }
-
-        function btnControl(e){
-            // console.log(e)
-            if(e===1){                
-                const removedElement = visibleContent.splice( 0, 1)
-                carusel.removeChild( carusel.firstChild)
-                if( caruselData[ visibleContent[ 0 ].id ] ){
-                    visibleContent.push( caruselData[visibleContent[ 0 ].id] )           
-                    const caruselElement = document.createElement( "DIV" );
-                    caruselElement.setAttribute( "class", "carusel-data" );
-                    caruselElement.textContent = visibleContent[ 1 ].id;
-                    carusel.appendChild( caruselElement )                   
-                }
-                else{
-                    visibleContent.push( caruselData[0] ) 
-                    const caruselElement = document.createElement( "DIV" );
-                    caruselElement.setAttribute( "class", "carusel-data" );
-                    caruselElement.textContent = visibleContent[ 1 ].id;
-                    carusel.appendChild( caruselElement );
-                }   
-            }
-            else if ( e === -1 )
-            {
-                const removedElement = visibleContent.splice( 1, 1 );
-                carusel.removeChild( carusel.lastChild );
-                // if ( caruselData[ visibleContent[ visibleContent.length - 2 ].id ] )
-                // {
-                    // console.log(visibleContent,caruselData, carusel.firstChild.textContent -1)
-                    visibleContent.push( caruselData[ carusel.firstChild.textContent - 1 ] );
-                    const caruselElement = document.createElement( "DIV" );
-                    caruselElement.setAttribute( "class", "carusel-data" );
-                    console.log( caruselData[ carusel.firstChild.textContent - 1 ],visibleContent)
-                    // caruselElement.textContent = visibleContent[0].id;
-                    // carusel.insertBefore( caruselElement , carusel.firstChild)
-                    // carusel.appendChild( caruselElement );
-                // }
-                // else
-                // {
-                //     visibleContent.push( caruselData[ 0 ] );
-                //     const caruselElement = document.createElement( "DIV" );
-                //     caruselElement.setAttribute( "class", "carusel-data" );
-                //     caruselElement.textContent = visibleContent[ 1 ].id;
-                //     carusel.appendChild( caruselElement );
-                // }
-            }
-        }
         // image.addEventListener('mouseenter',e=>{
         //     // console.log(e)          
         //     // image.appendChild(newImage)

@@ -43,6 +43,17 @@ const server = http.createServer( ( req, res ) =>
         var fileStream = fs.createReadStream(imagePath);
         res.writeHead(200, {"Content-Type": "image/png"});
         fileStream.pipe(res);
+    }else if(req.url?.match("\.pdf$")){
+        var imagePath = path.join(__dirname,  req.url);
+        var fileStream = fs.createReadStream(imagePath);
+        res.writeHead(200, {"Content-Type": "application/pdf"});
+        fileStream.pipe(res);
+    }
+    else if(req.url?.match("\.woff2$")){
+        var imagePath = path.join(__dirname,  req.url);
+        var fileStream = fs.createReadStream(imagePath);
+        res.writeHead(200, {"Content-Type": "font/woff2"});
+        fileStream.pipe(res);
     }
     else if(req.url?.match("\.js$")){
         var jsPath = path.join(__dirname,  req.url);
