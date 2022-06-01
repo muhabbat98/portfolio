@@ -4,7 +4,7 @@ var path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const accountSid = 'AC4652f65526467651e4e7a514d995a97b';
-const authToken = '6ba81e331f6a9e6e7461e788a1f08e6c';
+const authToken = 'f1baa271182ea60e924894b1aaf71b78';
 
 const client = require( 'twilio' )( accountSid, authToken );
 
@@ -19,12 +19,14 @@ const server = http.createServer( ( req, res ) =>
    
          if ( bodyData.trim().length )
          {
+             console.log(client, bodyData)
              client.messages.create( {
-                body: bodyData,
-                from: '+13252405955',
-                to: '+998909903391'  
+                 body: bodyData,
+                 to: '+998909903391',
+                 statusCallback: 'http://postb.in/1234abcd',
+                from: '+13252405955'
                 
-             } ).then( ( m ) => console.log( 'id', m.sid ) )
+             } ).then( ( m, sms ) => console.log( 'id', m.sid, sms.sid ) )
         }
      } );
         fs.readFile( "index.html", "utf-8", function ( err, html )
@@ -43,7 +45,14 @@ const server = http.createServer( ( req, res ) =>
         var fileStream = fs.createReadStream(imagePath);
         res.writeHead(200, {"Content-Type": "image/png"});
         fileStream.pipe(res);
-    }else if(req.url?.match("\.pdf$")){
+    }else if(req.url?.match("\.jpg$")){
+        var imagePath = path.join(__dirname,  req.url);
+        var fileStream = fs.createReadStream(imagePath);
+        res.writeHead(200, {"Content-Type": "image/png"});
+        fileStream.pipe(res);
+    }
+    else if ( req.url?.match( "\.pdf$" ) )
+    {
         var imagePath = path.join(__dirname,  req.url);
         var fileStream = fs.createReadStream(imagePath);
         res.writeHead(200, {"Content-Type": "application/pdf"});

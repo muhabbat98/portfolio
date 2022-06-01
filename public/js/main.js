@@ -95,11 +95,21 @@
         );
         wow.init();
 
-        function openModal(){
+        function openModal (){
             modal.style.display = 'flex';
+            
+            setTimeout( () =>{
+                modal.childNodes[ 1 ].style.transform = 'translateY(0) ';
+                modal.childNodes[ 1 ].style.transition = 'all 0.5s ease';   
+            },500)
         }
         function closeModal (){
-            modal.style.display = 'none';
+            modal.childNodes[ 1 ].style.transform = 'translateY(-100vh) ';
+            modal.childNodes[ 1 ].style.transition = 'all 0.5s ease';
+
+            setTimeout( () =>{
+                modal.style.display = 'none';
+            },500)
         }
         function scrollMe(e){
             const element = document.getElementById(e);

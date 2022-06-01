@@ -229,6 +229,13 @@ body{
     /* justify-content: space-between; */
 
 }
+.work-big-photo{
+    max-width: 50%;
+    padding: 90px;
+}
+.work-big-photo img{
+    width: 100%;
+}
 .work-description{
     padding: 90px;
     width: 50%;
@@ -426,7 +433,7 @@ footer .endup{
      left: 0;
      right: 0;
      bottom: 0;
-     z-index: 15;
+     z-index: 35;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -434,11 +441,13 @@ footer .endup{
  }
  .modal-window{
      min-width: 50%;
-     min-height: 70%;
+     min-height: 55%;
      background-color: white;
      border-radius: 16px;
      padding: 32px;
      position: relative;
+    transform: translateY(-100vh);
+    transition: all 0.5s ease;
  }
  .modal-window h2{
     color: var(--main-text-color);
@@ -456,7 +465,7 @@ footer .endup{
     font-family: 'Eczar';
     font-style: normal;
     font-weight: 600;
-    font-size: 32px;    
+    font-size: 32px; 
  }
 .modal-window a{
     text-decoration: none;
