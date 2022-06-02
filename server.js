@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 const accountSid = 'AC4652f65526467651e4e7a514d995a97b';
 const authToken = 'f1baa271182ea60e924894b1aaf71b78';
-
+const nodeMailer = require('nodemailer')
 const client = require( 'twilio' )( accountSid, authToken );
 
 
@@ -13,20 +13,36 @@ const server = http.createServer( ( req, res ) =>
 {
     
     if(req.url === "/"){
-     req.on( 'data', (e) =>
+     req.on( 'data', async(e) =>
     {
         let bodyData = e.toString( 'utf-8' ).slice(e.toString( 'utf-8' ).indexOf('=')+1).replace('+',' ')
-   
+        let testAccount = await nodeMailer.createTestAccount();
          if ( bodyData.trim().length )
          {
-             console.log(client, bodyData)
-             client.messages.create( {
-                 body: bodyData,
-                 to: '+998909903391',
-                 statusCallback: 'http://postb.in/1234abcd',
-                from: '+13252405955'
-                
-             } ).then( ( m, sms ) => console.log( 'id', m.sid, sms.sid ) )
+            let transporter = nodeMailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+              user:  testAccount.user,
+              pass:  testAccount.pass
+          }
+      });
+      let mailOptions = {
+          from: 'bmpmuhabbatpulatova98@gmail.com', // sender address
+          to: 'bmpmuhabbatpulatova98@gmail.com', // list of receivers
+          subject: 'email', // Subject line
+          text: bodyData, // plain text body
+          html: '<b>NodeJS Email</b>' // html body
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message %s sent: %s', info.messageId, info.response);
+            //   res.('index');
+          });
         }
      } );
         fs.readFile( "index.html", "utf-8", function ( err, html )
